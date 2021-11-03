@@ -1,0 +1,4 @@
+D:\Distributiv\SCADA.Common\SCADA.Graphics\bin\Debug\SCADA.Graphics.dll
+D:\Distributiv\SCADA.Common\SCADA.Graphics\bin\Debug\SCADA.Graphics.pdb
+D:\Distributiv\SCADA.Common\SCADA.Graphics\obj\Debug\SCADA.Graphics.dll
+D:\Distributiv\SCADA.Common\SCADA.Graphics\obj\Debug\SCADA.Graphics.pdb

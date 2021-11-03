@@ -1,0 +1,37 @@
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\bin\Debug\SCADA.Common.dll
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\bin\Debug\SCADA.Common.pdb
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.dll
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.pdb
+C:\Users\Артем\Documents\Visual Studio 2012\Projects\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.csprojResolveAssemblyReference.cache
+D:\Project\SaveProtocol\SaveProtocol\bin\Debug\SCADA.Common.dll
+D:\Project\SaveProtocol\SaveProtocol\bin\Debug\SCADA.Common.pdb
+D:\Project\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.csprojResolveAssemblyReference.cache
+D:\Project\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.dll
+D:\Project\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.pdb
+E:\SaveProtocol\SaveProtocol\bin\Debug\SCADA.Common.dll
+E:\SaveProtocol\SaveProtocol\bin\Debug\SCADA.Common.pdb
+E:\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.dll
+E:\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.pdb
+E:\SaveProtocol\SaveProtocol\obj\Debug\SCADA.Common.csprojResolveAssemblyReference.cache
+d:\Distributiv\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.dll
+d:\Distributiv\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.pdb
+d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.dll
+d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.pdb
+D:\work\SCADA.Common\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.dll
+D:\work\SCADA.Common\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.pdb
+D:\work\SCADA.Common\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csprojAssemblyReference.cache
+D:\work\SCADA.Common\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInputs.cache
+D:\work\SCADA.Common\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.dll
+D:\work\SCADA.Common\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.pdb
+d:\Distr\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.dll
+d:\Distr\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.pdb
+d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csprojAssemblyReference.cache
+d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInputs.cache
+d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.dll
+d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.pdb
+D:\Distr\SCADA.Common\SaveProtocol\bin\Debug\log4net.dll
+D:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CopyComplete
+D:\Distributiv\SCADA.Common\SaveProtocol\bin\Debug\log4net.dll
+d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInputs.cache
+d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CopyComplete
+D:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csprojAssemblyReference.cache

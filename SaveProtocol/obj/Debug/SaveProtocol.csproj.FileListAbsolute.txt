@@ -1,0 +1,5 @@
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\obj\Debug\SaveProtocol.csprojResolveAssemblyReference.cache
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\bin\Debug\SaveProtocol.dll
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\bin\Debug\SaveProtocol.pdb
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\obj\Debug\SaveProtocol.dll
+c:\users\артем\documents\visual studio 2012\Projects\SaveProtocol\SaveProtocol\obj\Debug\SaveProtocol.pdb
