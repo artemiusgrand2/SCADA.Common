@@ -1,4 +1,5 @@
 ﻿using System;
+using SCADA.Common.Enums;
 
 namespace SCADA.Common.ImpulsClient.Interface
 {
@@ -11,5 +12,7 @@ namespace SCADA.Common.ImpulsClient.Interface
 
         void Start();
         void Stop();
+        ViewController View { get; }
+        string ClientInfo { get; }
     }
 }

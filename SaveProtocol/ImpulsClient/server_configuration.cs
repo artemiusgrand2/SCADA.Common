@@ -25,7 +25,6 @@ namespace SCADA.Common.ImpulsClient
 
 		public static ServerConfiguration FromFile(string configFile)
 		{
-			//îòêðûâàþ ôàéë êîíôèãóðàöèè
 			XmlSerializer ser = null;
 			ser = new XmlSerializer(typeof(ServerConfiguration));
 

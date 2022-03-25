@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading;
 using System.Text;
 using System.Net.Sockets;
+
 using SCADA.Common.ImpulsClient;
 using SCADA.Common.ImpulsClient.requests;
-
 using SCADA.Common.ImpulsClient.Interface;
+using SCADA.Common.Enums;
+using SCADA.Common.Log;
 
 namespace SCADA.Common.ImpulsClient.ServerController
 {
@@ -28,6 +30,21 @@ namespace SCADA.Common.ImpulsClient.ServerController
 
         public event ErrorHandler<ICommunicationController, Exception> OnError;
 
+        public string ClientInfo
+        {
+            get
+            {
+                return $"{_client.Client.RemoteEndPoint.ToString()} ImpulsServer";
+            }
+        }
+
+        public ViewController View
+        {
+            get
+            {
+                return ViewController.ISController;
+            }
+        }
 
         public ISController(TcpClient client, DataContainer impContainer)
         {
@@ -36,6 +53,7 @@ namespace SCADA.Common.ImpulsClient.ServerController
             _requestHandler = new RequestHandler(impContainer);
             _thread = new Thread(Work);
             _parser = new FrameParser();
+            Logger.LogCommon.Info($"Подключился клиент {ClientInfo}");
         }
 
         public void Start()

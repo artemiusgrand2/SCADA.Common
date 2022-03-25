@@ -212,7 +212,7 @@ namespace SCADA.Common.ImpulsClient
                                 _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.ActiveState);
                             else
                                 _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
-                        }
+                        } 
                         else if(state_on == StatesControl.pasiv && state_off == StatesControl.pasiv)
                             _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
                         //else

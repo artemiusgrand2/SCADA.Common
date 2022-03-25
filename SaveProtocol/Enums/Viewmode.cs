@@ -202,6 +202,10 @@ namespace SCADA.Common.Enums
         /// <summary>
         /// Белый мигающий
         /// </summary>
-        controlWhiteF
+        controlWhiteF,
+        /// <summary>
+        /// Диспетчерское управление без упр
+        /// </summary>
+        supervisory_without_control
     }
 }

@@ -3,6 +3,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
+using SCADA.Common.ImpulsClient.requests;
+
 namespace SCADA.Common.HelpCommon
 {
     public class HelpFuctions
@@ -35,6 +37,27 @@ namespace SCADA.Common.HelpCommon
         public static double Speed(double start, double end, DateTime starttime, DateTime endtime)
         {
             return Math.Round(3.6 * (Math.Abs((end - start) / (endtime - starttime).TotalSeconds)), 1);
+        }
+
+        public static string GetDiagnostInfoForAnswerCommand(RequestError answer, int station, string command)
+        {
+            switch (answer)
+            {
+                case RequestError.Successful:
+                    return $"Команда '{command}', станция - {station} успешно отправлена.";
+                case RequestError.AccessDenied:
+                    return $"Команда '{command}', станция - {station} не выполнена. Доступ закрыт";
+                case RequestError.IOError:
+                    return $"Команда '{command}', станция - {station} не выполнена. Ошибка связи";
+                case RequestError.UnknownCommand:
+                    return $"Команда '{command}', станция - {station} не выполнена. Неизвестная команда";
+                case RequestError.UnknownRequest:
+                    return $"Команда '{command}', станция - {station} не выполнена. Неизвестный запрос";
+                case RequestError.UnknownStation:
+                    return $"Команда '{command}', станция - {station} не выполнена. Неизвестная станция";
+                default:
+                    return $"Команда '{command}', станция - {station} не выполнена. Неизветсная ошибка - '{(int)answer}'";
+            }
         }
     }
 }

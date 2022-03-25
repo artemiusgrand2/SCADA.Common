@@ -5,15 +5,16 @@ using SCADA.Common.Enums;
 
 namespace SCADA.Common.ImpulsClient
 {
-	/// <summary>
-	/// Таблица импульсов.
-	/// </summary>
-	public class TableImpulses 
+ 
+    /// <summary>
+    /// Таблица импульсов.
+    /// </summary>
+    public class TableImpulses 
     {
-		/// <summary>
-		/// Время последнего изменения.
-		/// </summary>
-		private DateTime _timeChanged;
+        /// <summary>
+        /// Время последнего изменения.
+        /// </summary>
+        private DateTime _timeChanged;
 
 
         public ImpulseState this[int index]
@@ -27,8 +28,6 @@ namespace SCADA.Common.ImpulsClient
                 _impulses[index].State = value;
             }
         }
-
-
 
         private readonly List<Impulse> _impulses;
 
@@ -44,6 +43,16 @@ namespace SCADA.Common.ImpulsClient
         /// номер станции
         /// </summary>
         private readonly int _stCode;
+
+        public int StationCode
+        {
+            get
+            {
+                return _stCode;
+            }
+        }
+
+        //public event NewStateEventHandler NewState;
         /// <summary>
         /// Заполняет таблицу импульсов.
         /// </summary>
@@ -58,12 +67,12 @@ namespace SCADA.Common.ImpulsClient
 			for(int i = 0; i < impulses.Length; i++)
 			{
                 if (_impulses.Where(x => x.Name == impulses[i].Name).FirstOrDefault() == null)
-                    _impulses.Add(new Impulse(impulses[i].Name, impulses[i].Type, impulses[i].ToolTip));
+                    _impulses.Add(new Impulse(impulses[i].Name, impulses[i].Type, impulses[i].ToolTip, _stCode));
                 else
                 {
                     System.Console.Error.WriteLine("Дублированное имя импульса '{0}'({1}[{2}])",
                                                                             impulses[i].Name, stCode, i);
-                    _impulses.Add(new Impulse($"{impulses[i].Name}_{i}", impulses[i].Type, impulses[i].ToolTip));
+                    _impulses.Add(new Impulse($"{impulses[i].Name}_{i}", impulses[i].Type, impulses[i].ToolTip, _stCode));
                 }
 			}
 		}
@@ -75,8 +84,6 @@ namespace SCADA.Common.ImpulsClient
 				return _impulses.Select(x=>x.Name).ToList();
 			}
 		}
-
-
 
         public int Count
         {
@@ -137,8 +144,6 @@ namespace SCADA.Common.ImpulsClient
             else
                 return false;
         }
-
-
         /// <summary>
         /// Установить состояние импульса с определенным именем
         /// </summary>

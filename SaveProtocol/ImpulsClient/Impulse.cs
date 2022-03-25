@@ -3,6 +3,8 @@ using SCADA.Common.Enums;
 
 namespace SCADA.Common.ImpulsClient
 {
+
+    public delegate void UpdateStateImpulsEventHandler(int stationNumber, string nameImpuls, TypeImpuls type, StatesControl newState);
     /// <summary>
     /// Класс для загрузки импульса из входн
     /// </summary>
@@ -29,7 +31,11 @@ namespace SCADA.Common.ImpulsClient
             }
             set
             {
-                 _state = value;
+                if(_state != value)
+                {
+                    _state = value;
+                    SetEventUpdateStateImpuls();
+                }
             }
         }
 
@@ -45,15 +51,20 @@ namespace SCADA.Common.ImpulsClient
             }
         }
 
+        public event UpdateStateImpulsEventHandler UpdateStateImpuls;
+
+        int _stationNumber;
+
         public Impulse(string name, TypeImpuls type = TypeImpuls.ts)
         {
             SetDefult(name, type);
         }
 
-        public Impulse(string name, TypeImpuls type, string toolTip)
+        public Impulse(string name, TypeImpuls type, string toolTip, int stationNumber)
         {
             SetDefult(name, type);
             ToolTip = toolTip;
+            _stationNumber = stationNumber;
         }
 
         private void SetDefult(string name, TypeImpuls type = TypeImpuls.ts)
@@ -92,6 +103,12 @@ namespace SCADA.Common.ImpulsClient
                 default:
                     return ImpulseState.UncontrolledState;
             }
+        }
+
+        private void SetEventUpdateStateImpuls()
+        {
+            if (UpdateStateImpuls != null)
+                UpdateStateImpuls(_stationNumber, Name, Type, StateShort);
         }
 
     }

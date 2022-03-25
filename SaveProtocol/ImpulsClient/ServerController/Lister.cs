@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Timers;
 using System.Net.Sockets;
 using System.Net;
+
 using SCADA.Common.ImpulsClient.Interface;
+using SCADA.Common.Enums;
+using SCADA.Common.Log;
 
 namespace SCADA.Common.ImpulsClient.ServerController
 {
@@ -20,14 +23,29 @@ namespace SCADA.Common.ImpulsClient.ServerController
         /// </summary>
         readonly int m_maxCountClient = 50;
         readonly DataContainer _dataContainer;
-
+        readonly ImpulsesClientTCP _sourceImpulsServer;
         readonly IList<ICommunicationController> clientControllers;
+
+        readonly ViewController _viewController;
 
         #endregion
 
         public Lister(int portLister, DataContainer dataContainer)
         {
             _dataContainer = dataContainer;
+            _viewController = ViewController.ISController;
+            listener = new TcpListener(IPAddress.Any, portLister);
+            timerWork = new System.Timers.Timer();
+            timerWork.Interval = 100;
+            timerWork.Elapsed += Work;
+            clientControllers = new List<ICommunicationController>();
+        }
+
+        public Lister(int portLister, DataContainer dataContainer, ImpulsesClientTCP sourceImpulsServer)
+        {
+            _dataContainer = dataContainer;
+            _sourceImpulsServer = sourceImpulsServer;
+            _viewController = ViewController.TestController;
             listener = new TcpListener(IPAddress.Any, portLister);
             timerWork = new System.Timers.Timer();
             timerWork.Interval = 100;
@@ -65,10 +83,10 @@ namespace SCADA.Common.ImpulsClient.ServerController
             {
                 if (clientControllers.Count < m_maxCountClient)
                 {
-                    var newISController = new ISController(listener.AcceptTcpClient(), _dataContainer);
-                    newISController.OnError += ClientControllerOnOnError;
-                    clientControllers.Add(newISController);
-                    newISController.Start();
+                    ICommunicationController newController = CreateController();
+                    newController.OnError += ClientControllerOnOnError;
+                    clientControllers.Add(newController);
+                    newController.Start();
                 }
 
             }
@@ -91,7 +109,18 @@ namespace SCADA.Common.ImpulsClient.ServerController
             }
             catch (Exception e)
             {
-                // Logger.Log.LogError("Can't free client. {0}", e);
+                Logger.LogCommon.Info($"Отключился клиент {controller.ClientInfo}");
+            }
+        }
+
+        private ICommunicationController CreateController()
+        {
+            switch (_viewController)
+            {
+                case ViewController.TestController:
+                    return new TestController(listener.AcceptTcpClient(), _dataContainer, _sourceImpulsServer);
+                default:
+                    return new ISController(listener.AcceptTcpClient(), _dataContainer);
             }
         }
     }

@@ -58,6 +58,7 @@
     <Compile Include="Enums\ViewArea.cs" />
     <Compile Include="Enums\ViewBlock.cs" />
     <Compile Include="Enums\ViewCommand.cs" />
+    <Compile Include="Enums\ViewController.cs" />
     <Compile Include="Enums\ViewElement.cs" />
     <Compile Include="Enums\ViewElementDraw.cs" />
     <Compile Include="Enums\ViewLights.cs" />
@@ -93,6 +94,7 @@
     <Compile Include="ImpulsClient\requests\TablesListRequestHeader.cs" />
     <Compile Include="ImpulsClient\requests\TimeAnswer.cs" />
     <Compile Include="ImpulsClient\ServerController\Lister.cs" />
+    <Compile Include="ImpulsClient\ServerController\TestController.cs" />
     <Compile Include="ImpulsClient\server_configuration.cs" />
     <Compile Include="ImpulsClient\Station.cs" />
     <Compile Include="ImpulsClient\StationTableServiceTs.cs" />
