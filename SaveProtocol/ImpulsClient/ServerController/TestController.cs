@@ -15,7 +15,7 @@ namespace SCADA.Common.ImpulsClient.ServerController
 {
     public class TestController : ICommunicationController
     {
-        readonly TimeSpan _echoMessageTimeout = TimeSpan.FromSeconds(700);
+        readonly TimeSpan _echoMessageTimeout = TimeSpan.FromSeconds(7);
         DateTime _lastCommunicatedTime;
         bool _isStop;
         readonly Thread _thread;
@@ -27,7 +27,7 @@ namespace SCADA.Common.ImpulsClient.ServerController
         readonly string _patterGET = @"\s*GET:([0-9]+):(.+)\s*\n";
         readonly string _patterCMDTU = @"\s*CMD:([0-9]+):(.+):(0|1)\s*\n";
         readonly string _patterCMDTS = @"\s*CMD:([0-9]+):@(.+):(0|1|2|3)\s*\n";
-        readonly Encoding _encoding = Encoding.UTF8;
+        readonly Encoding _encoding = Encoding.GetEncoding(1251);
         public ViewController View
         {
             get
