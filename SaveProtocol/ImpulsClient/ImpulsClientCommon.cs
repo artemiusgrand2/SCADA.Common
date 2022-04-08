@@ -206,14 +206,24 @@ namespace SCADA.Common.ImpulsClient
                         StatesControl state_on = Data.GetStateControl(station.Key, impulses.Value[Viewmode.impuls_activ]);
                         StatesControl state_off = Data.GetStateControl(station.Key, impulses.Value[Viewmode.impuls_pasiv]);
                         //
-                        if ((state_on == StatesControl.activ && state_off != StatesControl.activ) || (state_off == StatesControl.activ && state_on != StatesControl.activ))
+                        //if ((state_on == StatesControl.activ && state_off != StatesControl.activ) || (state_off == StatesControl.activ && state_on != StatesControl.activ))
+                        //{
+                        //    if (state_on == StatesControl.activ && state_off != StatesControl.activ)
+                        //        _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.ActiveState);
+                        //    else
+                        //        _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
+                        //} 
+                        //else if(state_on == StatesControl.pasiv && state_off == StatesControl.pasiv)
+                        //    _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
+
+                        if (state_on == StatesControl.activ || state_off == StatesControl.activ)
                         {
-                            if (state_on == StatesControl.activ && state_off != StatesControl.activ)
+                            if (state_on == StatesControl.activ)
                                 _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.ActiveState);
                             else
                                 _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
-                        } 
-                        else if(state_on == StatesControl.pasiv && state_off == StatesControl.pasiv)
+                        }
+                        else if (state_on == StatesControl.nocontrol || state_off == StatesControl.nocontrol || _data.Stations[station.Key].TS.GetState(impulses.Key) == ImpulseState.UncontrolledState)
                             _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
                         //else
                         //    Connections.ClientImpulses.data.Stations[station.Key].TS.set_state(impulses.Key, ImpulseState.UncontrolledState);
