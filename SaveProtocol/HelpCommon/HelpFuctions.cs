@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 
+using System.Windows.Media;
 using SCADA.Common.ImpulsClient.requests;
 
 namespace SCADA.Common.HelpCommon
@@ -58,6 +59,16 @@ namespace SCADA.Common.HelpCommon
                 default:
                     return $"Команда '{command}', станция - {station} не выполнена. Неизветсная ошибка - '{(int)answer}'";
             }
+        }
+
+        public static int RGBtoInt(Color color)
+        {
+            return (256 * 256 * color.R + 256 * color.G + color.B);
+        }
+
+        public static int RGBtoInt(byte r, byte g, byte b)
+        {
+            return (256 * 256 * r + 256 * g + b);
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Net.Sockets;
 using System.Net;
 
 using SCADA.Common.ImpulsClient.Interface;
+using SCADA.Common.SyncCollections;
+using SCADA.Common.Models;
 using SCADA.Common.Enums;
 using SCADA.Common.Log;
 
@@ -24,6 +26,8 @@ namespace SCADA.Common.ImpulsClient.ServerController
         readonly int m_maxCountClient = 50;
         readonly DataContainer _dataContainer;
         readonly ImpulsesClientTCP _sourceImpulsServer;
+        readonly ThreadSafeList<GraficElementModel> _graficksElement;
+        public event ServiceCommandHandler OnServiceCommand;
         readonly IList<ICommunicationController> clientControllers;
 
         readonly ViewController _viewController;
@@ -41,10 +45,11 @@ namespace SCADA.Common.ImpulsClient.ServerController
             clientControllers = new List<ICommunicationController>();
         }
 
-        public Lister(int portLister, DataContainer dataContainer, ImpulsesClientTCP sourceImpulsServer)
+        public Lister(int portLister, DataContainer dataContainer, ImpulsesClientTCP sourceImpulsServer, ThreadSafeList<GraficElementModel> graficksElement = null)
         {
             _dataContainer = dataContainer;
             _sourceImpulsServer = sourceImpulsServer;
+            _graficksElement = graficksElement;
             _viewController = ViewController.TestController;
             listener = new TcpListener(IPAddress.Any, portLister);
             timerWork = new System.Timers.Timer();
@@ -85,11 +90,19 @@ namespace SCADA.Common.ImpulsClient.ServerController
                 {
                     ICommunicationController newController = CreateController();
                     newController.OnError += ClientControllerOnOnError;
+                    if(newController.View == ViewController.TestController)
+                        (newController as TestController).OnServiceCommand += Lister_OnServiceCommand;
                     clientControllers.Add(newController);
                     newController.Start();
                 }
 
             }
+        }
+
+        private void Lister_OnServiceCommand(int stationNumber, ViewServiceCommand typeCommand)
+        {
+            if (OnServiceCommand != null)
+                OnServiceCommand(stationNumber, typeCommand);
         }
 
         private void ClientControllerOnOnError(ICommunicationController sender, Exception value)
@@ -118,7 +131,7 @@ namespace SCADA.Common.ImpulsClient.ServerController
             switch (_viewController)
             {
                 case ViewController.TestController:
-                    return new TestController(listener.AcceptTcpClient(), _dataContainer, _sourceImpulsServer);
+                    return new TestController(listener.AcceptTcpClient(), _dataContainer, _sourceImpulsServer, _graficksElement);
                 default:
                     return new ISController(listener.AcceptTcpClient(), _dataContainer);
             }
