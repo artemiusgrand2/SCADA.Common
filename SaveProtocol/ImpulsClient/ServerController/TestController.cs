@@ -34,7 +34,7 @@ namespace SCADA.Common.ImpulsClient.ServerController
         readonly string _patterCMDTU = @"\s*CMD:([0-9]+):(.+):(0|1)\s*\n";
         readonly string _patterCMDTS = @"\s*CMD:([0-9]+):@(.+):(0|1|2|3)\s*\n";
         readonly string _patterCMDST = @"\s*CMD:([0-9]+):open\s*\n";
-        readonly Encoding _encoding = Encoding.UTF8;// Encoding.GetEncoding(1251);
+        readonly Encoding _encoding =  Encoding.GetEncoding(1251);
         public ViewController View
         {
             get
