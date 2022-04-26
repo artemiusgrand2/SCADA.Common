@@ -108,6 +108,14 @@ namespace SCADA.Common.Models
 
         public TypeView TypeView { get; private set; }
 
+        public string InfoTestProtocol
+        {
+            get
+            {
+                return $"{StationNumber}:{(byte)TypeView}:{(byte)ViewElement}:{Name}";
+            }
+        }
+
         public GraficElementModel(string name, int stationNumber, ViewElement view, TypeView typeView)
         {
             Name = name;
