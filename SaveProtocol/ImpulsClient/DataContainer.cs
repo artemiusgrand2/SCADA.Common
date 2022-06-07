@@ -4,6 +4,7 @@ using System.Text;
 
 using SCADA.Common.LogicalParse;
 using SCADA.Common.Enums;
+using SCADA.Common.Log;
 
 namespace SCADA.Common.ImpulsClient
 {
@@ -128,6 +129,39 @@ namespace SCADA.Common.ImpulsClient
             }
         }
 
+        public bool CheckFormula(int stationDefault, string formula)
+        {
+            var result = true;
+            try
+            {
+                InfixNotation inNot = new InfixNotation(formula);
+                foreach (string impulsNameFull in inNot._impulsesNames)
+                {
+                    var nameImpuls = impulsNameFull;
+                    var station = ParseStationNumber(ref nameImpuls, stationDefault);
+                    if (Stations.ContainsKey(station))
+                    {
+                        if (!Stations[station].TS.Contains(nameImpuls))
+                        {
+                            Logger.LogCommon.Error($"Импульса - '{nameImpuls}' нет на станции с код еср - {station}. Формула - '{formula}'");
+                            result = false;
+                        }
+                    }
+                    else
+                    {
+                        Logger.LogCommon.Error($"Станции с кодом еср - {station} не существует. Формула - '{formula}'");
+                        result = false;
+                    }
+
+                }
+            }
+            catch
+            {
+                result =  false;
+            }
+            //
+            return result;
+        }
 
         private static int ParseStationNumber(ref string nameImpuls, int stationDefault)
         {
