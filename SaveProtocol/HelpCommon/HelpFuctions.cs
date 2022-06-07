@@ -2,6 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 using System.Windows.Media;
 using SCADA.Common.ImpulsClient.requests;
@@ -69,6 +70,32 @@ namespace SCADA.Common.HelpCommon
         public static int RGBtoInt(byte r, byte g, byte b)
         {
             return (256 * 256 * r + 256 * g + b);
+        }
+
+        public static int ParseStationNumber(ref string nameImpuls, int stationDefault)
+        {
+            var charsSplit = new char[] { '.', ':' };
+            var cells = nameImpuls.Split(charsSplit, StringSplitOptions.RemoveEmptyEntries);
+            if (cells.Length > 1)
+            {
+                int buffer;
+                if (int.TryParse(cells[0], out buffer))
+                {
+                    var findIndex = nameImpuls.IndexOf(cells[0] + ".");
+                    if ((findIndex == 0 && cells[0].Length >= 6) || findIndex != 0)
+                    {
+                        nameImpuls = nameImpuls.Substring(cells[0].Length + 1);
+                        return buffer;
+                    }
+                }
+            }
+            //
+            return stationDefault;
+        }
+
+        public static IList<string> ParseTUCommandStr(string command)
+        {
+            return command.Split(new char[] { ',', '*' }, StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToList();
         }
     }
 }

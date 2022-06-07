@@ -5,6 +5,7 @@ using System.Text;
 using SCADA.Common.LogicalParse;
 using SCADA.Common.Enums;
 using SCADA.Common.Log;
+using SCADA.Common.HelpCommon;
 
 namespace SCADA.Common.ImpulsClient
 {
@@ -101,7 +102,7 @@ namespace SCADA.Common.ImpulsClient
                 foreach (string impulsNameFull in inNot._impulsesNames)
                 {
                     var nameImpuls = impulsNameFull;
-                    var station = ParseStationNumber(ref nameImpuls, stationDefault);
+                    var station = HelpFuctions.ParseStationNumber(ref nameImpuls, stationDefault);
                     if (Stations.ContainsKey(station))
                     {
                         switch (Stations[station].TS.GetState(nameImpuls))
@@ -129,30 +130,52 @@ namespace SCADA.Common.ImpulsClient
             }
         }
 
-        public bool CheckFormula(int stationDefault, string formula)
+        public bool CheckTSTU(int stationNumber, string formula, TypeImpuls type = TypeImpuls.ts)
         {
             var result = true;
             try
             {
-                InfixNotation inNot = new InfixNotation(formula);
-                foreach (string impulsNameFull in inNot._impulsesNames)
+
+                if (type == TypeImpuls.ts)
                 {
-                    var nameImpuls = impulsNameFull;
-                    var station = ParseStationNumber(ref nameImpuls, stationDefault);
-                    if (Stations.ContainsKey(station))
+                    InfixNotation inNot = new InfixNotation(formula);
+                    foreach (var impulsNameFull in inNot._impulsesNames)
                     {
-                        if (!Stations[station].TS.Contains(nameImpuls))
+                        var nameImpuls = impulsNameFull;
+                        var stationParse = HelpFuctions.ParseStationNumber(ref nameImpuls, stationNumber);
+                        if (Stations.ContainsKey(stationParse))
                         {
-                            Logger.LogCommon.Error($"Импульса - '{nameImpuls}' нет на станции с код еср - {station}. Формула - '{formula}'");
+                            if (!Stations[stationParse].TS.Contains(nameImpuls))
+                            {
+                                Logger.LogCommon.Error($"Импульса ТС - '{nameImpuls}' нет на станции с код еср - {stationParse}. Запись - '{formula}'");
+                                result = false;
+                            }
+                        }
+                        else
+                        {
+                            Logger.LogCommon.Error($"Станции с кодом еср - {stationParse} не существует. Запись - '{formula}'");
                             result = false;
+                        }
+                    }
+                }
+                else
+                {
+                    if (Stations.ContainsKey(stationNumber))
+                    {
+                        foreach (var impTU in HelpFuctions.ParseTUCommandStr(formula))
+                        {
+                            if (!Stations[stationNumber].TU.Contains(impTU))
+                            {
+                                Logger.LogCommon.Error($"Импульса ТУ - '{impTU}' нет на станции с код еср - {stationNumber}. Запись - '{formula}'");
+                                result = false;
+                            }
                         }
                     }
                     else
                     {
-                        Logger.LogCommon.Error($"Станции с кодом еср - {station} не существует. Формула - '{formula}'");
+                        Logger.LogCommon.Error($"Станции с кодом еср - {stationNumber} не существует. Запись - '{formula}'");
                         result = false;
                     }
-
                 }
             }
             catch
@@ -161,27 +184,6 @@ namespace SCADA.Common.ImpulsClient
             }
             //
             return result;
-        }
-
-        private static int ParseStationNumber(ref string nameImpuls, int stationDefault)
-        {
-            var charsSplit = new char[] { '.', ':' };
-            var cells = nameImpuls.Split(charsSplit, StringSplitOptions.RemoveEmptyEntries);
-            if (cells.Length > 1)
-            {
-                int buffer;
-                if (int.TryParse(cells[0], out buffer))
-                {
-                    var findIndex = nameImpuls.IndexOf(cells[0] + ".");
-                    if ((findIndex == 0 && cells[0].Length >= 6) || findIndex != 0)
-                    {
-                        nameImpuls = nameImpuls.Substring(cells[0].Length + 1);
-                        return buffer;
-                    }
-                }
-            }
-            //
-            return stationDefault;
         }
 
         /// <summary>
