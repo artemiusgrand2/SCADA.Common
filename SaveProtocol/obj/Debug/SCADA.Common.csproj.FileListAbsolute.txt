@@ -29,7 +29,6 @@ d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInpu
 d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.dll
 d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.pdb
 D:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CopyComplete
-D:\Distributiv\SCADA.Common\SaveProtocol\bin\Debug\log4net.dll
 d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInputs.cache
 d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CopyComplete
 D:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csprojAssemblyReference.cache
