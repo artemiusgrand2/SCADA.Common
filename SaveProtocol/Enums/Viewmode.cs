@@ -206,6 +206,15 @@ namespace SCADA.Common.Enums
         /// <summary>
         /// Диспетчерское управление без упр
         /// </summary>
-        supervisory_without_control
+        supervisory_without_control,
+        /// <summary>
+        /// контроль зеленый мигающий
+        /// </summary>
+        controlGreenF,
+        /// <summary>
+        /// контроль черный для рамки
+        /// </summary>
+        controlVioletStroke,
+
     }
 }

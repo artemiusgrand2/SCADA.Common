@@ -72,7 +72,7 @@ namespace SCADA.Common.ImpulsClient
                 {
                     System.Console.Error.WriteLine("Дублированное имя импульса '{0}'({1}[{2}])",
                                                                             impulses[i].Name, stCode, i);
-                    _impulses.Add(new Impulse($"{impulses[i].Name}_{i}", impulses[i].Type, impulses[i].ToolTip, _stCode));
+                    _impulses.Add(new Impulse($"{impulses[i].Name}_№ст{i}", impulses[i].Type, impulses[i].ToolTip, _stCode));
                 }
 			}
 		}
