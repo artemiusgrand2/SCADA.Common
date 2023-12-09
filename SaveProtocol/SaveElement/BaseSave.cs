@@ -7,6 +7,7 @@ namespace SCADA.Common.SaveElement
 {
      [XmlInclude(typeof(AreaSave)), XmlInclude(typeof(ArrowMoveSave)), XmlInclude(typeof(ButtonCommandSave)), XmlInclude(typeof(LightTrainSave)), XmlInclude(typeof(LineHelpSave)),
       XmlInclude(typeof(LinePeregonSave)), XmlInclude(typeof(NameStationSave)), XmlInclude(typeof(NumberTrainSave)), XmlInclude(typeof(RoadStation)), XmlInclude(typeof(TextHelpSave)),
+       XmlInclude(typeof(NameSwitchSave)),
       XmlInclude(typeof(TimeSave))]
     [Serializable]
     public class BaseSave

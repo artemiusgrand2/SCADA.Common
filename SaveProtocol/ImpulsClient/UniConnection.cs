@@ -131,7 +131,7 @@ namespace SCADA.Common.ImpulsClient
 				{
 //					DiagnosticManager.Instance.new_message_impulses_server("Ошибка при создании сокета - " + e.ToString());
 					//не установлен tcpip
-					System.Console.WriteLine(string.Format("new Socket(...): {0}", e.Message));
+					System.Console.WriteLine($"new Socket(...): {e.Message}");
 					throw new UniConnectionException(UniConnectionError.UnexpectedError, e);
 					
 				}
@@ -143,9 +143,13 @@ namespace SCADA.Common.ImpulsClient
 				}
 				catch(SocketException e)
 				{
-//					DiagnosticManager.Instance.new_message_impulses_server(string.Format("ошибка в соединении {0}", e.ToString()));
-					m_socket.Close();
-					m_socket = null;
+					//					DiagnosticManager.Instance.new_message_impulses_server(string.Format("ошибка в соединении {0}", e.ToString()));
+					if (m_socket != null)
+					{
+						m_socket.Close();
+						m_socket = null;
+					}
+			
 					UniConnectionError error = UniConnectionError.UnexpectedError;
 					switch(e.SocketErrorCode)
 					{

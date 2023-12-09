@@ -125,6 +125,7 @@
     <Compile Include="SaveElement\LinePeregonSave.cs" />
     <Compile Include="SaveElement\NameColors.cs" />
     <Compile Include="SaveElement\NameStationSave.cs" />
+    <Compile Include="SaveElement\NameSwitchSave.cs" />
     <Compile Include="SaveElement\NumberTrainSave.cs" />
     <Compile Include="SaveElement\RoadStation.cs" />
     <Compile Include="SaveElement\SaveTransform\Transform.cs" />

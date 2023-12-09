@@ -215,6 +215,13 @@ namespace SCADA.Common.Enums
         /// контроль черный для рамки
         /// </summary>
         controlVioletStroke,
-
+        /// <summary>
+        //минусовое положение стрелки
+        /// </summary>
+        minusSwitch,
+        /// <summary>
+        //плюсовое положение стрелки
+        /// </summary>
+        plusSwitch
     }
 }

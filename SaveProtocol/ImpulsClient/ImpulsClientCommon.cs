@@ -225,8 +225,9 @@ namespace SCADA.Common.ImpulsClient
                         }
                         else if (state_on == StatesControl.nocontrol || state_off == StatesControl.nocontrol || _data.Stations[station.Key].TS.GetState(impulses.Key) == ImpulseState.UncontrolledState)
                             _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
-                        //else
-                        //    Connections.ClientImpulses.data.Stations[station.Key].TS.set_state(impulses.Key, ImpulseState.UncontrolledState);
+                        else
+                            _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.UncontrolledState);
+                        // Connections.ClientImpulses.data.Stations[station.Key].TS.set_state(impulses.Key, ImpulseState.UncontrolledState);
                     }
                 }
             }

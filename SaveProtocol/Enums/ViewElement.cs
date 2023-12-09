@@ -36,6 +36,7 @@ namespace SCADA.Common.Enums
         disconnectors,
         analogCell,
         diagnostikCell,
-        webBrowser
+        webBrowser,
+        nameSwitch
     }
 }
