@@ -103,9 +103,9 @@ namespace SCADA.Common.ImpulsClient
                 {
                     var nameImpuls = impulsNameFull;
                     var station = HelpFuctions.ParseStationNumber(ref nameImpuls, stationDefault);
-                    if (Stations.ContainsKey(station))
+                    if (Stations.TryGetValue(station, out var findStation))
                     {
-                        switch (Stations[station].TS.GetState(nameImpuls))
+                        switch (findStation.TS.GetState(nameImpuls))
                         {
                             case ImpulseState.ActiveState:
                                 {
@@ -143,9 +143,9 @@ namespace SCADA.Common.ImpulsClient
                     {
                         var nameImpuls = impulsNameFull;
                         var stationParse = HelpFuctions.ParseStationNumber(ref nameImpuls, stationNumber);
-                        if (Stations.ContainsKey(stationParse))
+                        if (Stations.TryGetValue(stationParse, out var findStation))
                         {
-                            if (!Stations[stationParse].TS.Contains(nameImpuls))
+                            if (!findStation.TS.Contains(nameImpuls))
                             {
                                 Logger.LogCommon.Error($"Импульса ТС - '{nameImpuls}' нет на станции с код еср - {stationParse}. Запись - '{formula}'");
                                 result = false;
@@ -160,11 +160,11 @@ namespace SCADA.Common.ImpulsClient
                 }
                 else
                 {
-                    if (Stations.ContainsKey(stationNumber))
+                    if (Stations.TryGetValue(stationNumber, out var findStation))
                     {
                         foreach (var impTU in HelpFuctions.ParseTUCommandStr(formula))
                         {
-                            if (!Stations[stationNumber].TU.Contains(impTU))
+                            if (!findStation.TU.Contains(impTU))
                             {
                                 Logger.LogCommon.Error($"Импульса ТУ - '{impTU}' нет на станции с код еср - {stationNumber}. Запись - '{formula}'");
                                 result = false;

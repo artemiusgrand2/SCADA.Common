@@ -203,8 +203,9 @@ namespace SCADA.Common.ImpulsClient
                 {
                     foreach (KeyValuePair<string, Dictionary<Viewmode, string>> impulses in station.Value.NamesValue)
                     {
-                        StatesControl state_on = Data.GetStateControl(station.Key, impulses.Value[Viewmode.impuls_activ]);
-                        StatesControl state_off = Data.GetStateControl(station.Key, impulses.Value[Viewmode.impuls_pasiv]);
+
+                        var state_on = Data.GetStateControl(station.Key, impulses.Value[Viewmode.impuls_activ]);
+                        var state_off = Data.GetStateControl(station.Key, impulses.Value[Viewmode.impuls_pasiv]);
                         //
                         //if ((state_on == StatesControl.activ && state_off != StatesControl.activ) || (state_off == StatesControl.activ && state_on != StatesControl.activ))
                         //{
@@ -224,9 +225,9 @@ namespace SCADA.Common.ImpulsClient
                                 _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
                         }
                         else if (state_on == StatesControl.nocontrol || state_off == StatesControl.nocontrol || _data.Stations[station.Key].TS.GetState(impulses.Key) == ImpulseState.UncontrolledState)
-                            _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.PassiveState);
-                        else
                             _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.UncontrolledState);
+                        //else
+                        //    _data.Stations[station.Key].TS.SetState(impulses.Key, ImpulseState.UncontrolledState);
                         // Connections.ClientImpulses.data.Stations[station.Key].TS.set_state(impulses.Key, ImpulseState.UncontrolledState);
                     }
                 }
