@@ -202,14 +202,11 @@ namespace SCADA.Common.Models
             }
         }
 
-        public GraficElementTextModel(string name, int stationNumber, ViewElement view, TypeView typeView) : base(name, stationNumber, view, typeView)
-        {
+        public GraficElementTextModel(string name, int stationNumber, ViewElement view, TypeView typeView) : base(name, stationNumber, view, typeView) { }
 
-        }
-        public GraficElementTextModel():base()
-        {
+        public GraficElementTextModel(string name, ViewElement view) : base(name, view) { }
 
-        }
+        public GraficElementTextModel() : base() { }
 
 
     }

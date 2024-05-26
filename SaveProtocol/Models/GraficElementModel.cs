@@ -55,7 +55,7 @@ namespace SCADA.Common.Models
             }
         }
 
-        public IList<int>  ColorsInt
+        public IList<int> ColorsInt
         {
             get
             {
@@ -104,7 +104,7 @@ namespace SCADA.Common.Models
         public string Name { get; private set; }
 
 
-        public int StationNumber { get; private set; }
+        public int StationNumber { get; set; }
 
         public TypeView TypeView { get; private set; }
 
@@ -116,12 +116,19 @@ namespace SCADA.Common.Models
             }
         }
 
+
         public GraficElementModel(string name, int stationNumber, ViewElement view, TypeView typeView)
         {
             Name = name;
-            StationNumber = stationNumber; 
-             ViewElement = view;
+            StationNumber = stationNumber;
+            ViewElement = view;
             TypeView = typeView;
+        }
+
+        public GraficElementModel(string name, ViewElement view)
+        {
+            Name = name;
+            ViewElement = view;
         }
 
         public GraficElementModel()
