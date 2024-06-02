@@ -82,7 +82,7 @@ namespace SCADA.Common.HelpCommon
                 if (int.TryParse(cells[0], out buffer))
                 {
                     var findIndex = nameImpuls.IndexOf(cells[0] + ".");
-                    if ((findIndex == 0 && cells[0].Length >= 6) || findIndex != 0)
+                    if ((findIndex == 0 && cells[0].Length >= 1) || findIndex != 0)
                     {
                         nameImpuls = nameImpuls.Substring(cells[0].Length + 1);
                         return buffer;

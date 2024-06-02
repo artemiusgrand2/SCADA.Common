@@ -397,7 +397,7 @@ namespace SCADA.Common.ImpulsClient
             ImpulseState[] states_ts = new ImpulseState[answer.Header.TSCount];
             ImpulseState[] states_tu = new ImpulseState[answer.Header.TUCount];
 
-            if (_data.Stations.ContainsKey(answer.Header.StationID))
+            if (_data.Stations.TryGetValue(answer.Header.StationID, out var selectStation))
             {
                 for (int k = 0; k < answer.Header.TSCount; k++)
                 {
@@ -408,8 +408,8 @@ namespace SCADA.Common.ImpulsClient
                     states_tu[k] = (ImpulseState)answer.TuImpulses[k];
                 }
 
-                _data.Stations[answer.Header.StationID].SetImpulsesStates(states_ts, _date, ImpulsesTableType.TS);
-                _data.Stations[answer.Header.StationID].SetImpulsesStates(states_tu, _date, ImpulsesTableType.TU);
+                selectStation.SetImpulsesStates(states_ts, _date, ImpulsesTableType.TS);
+                selectStation.SetImpulsesStates(states_tu, _date, ImpulsesTableType.TU);
             }
         }
 
