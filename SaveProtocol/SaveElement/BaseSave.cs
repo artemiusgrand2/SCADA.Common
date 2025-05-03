@@ -90,6 +90,11 @@ namespace SCADA.Common.SaveElement
         /// <summary>
         /// Путь к файлу для запуска по нажатию мыши
         /// </summary>
-        public string FileForClick { get; set; } 
+        public string FileForClick { get; set; }
+
+        /// <summary>
+        /// Вид управляющей команды
+        /// </summary>
+        public ViewCommand ViewCommand { get; set; }
     }
 }

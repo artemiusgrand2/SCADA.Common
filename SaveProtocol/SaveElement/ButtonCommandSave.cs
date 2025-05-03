@@ -31,10 +31,6 @@ namespace SCADA.Common.SaveElement
         /// </summary>
         public double Yinsert { get; set; }
         /// <summary>
-        /// Вид управляющей команды
-        /// </summary>
-        public ViewCommand ViewCommand { get; set; }
-        /// <summary>
         /// Тип кнопки (для какой панели предназначен)
         /// </summary>
         public ViewPanel ViewPanel { get; set; }

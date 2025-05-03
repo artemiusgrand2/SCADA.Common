@@ -29,5 +29,8 @@ namespace SCADA.Common.Constant
         public const string pass = "Показать путь с платформой";
         public const string electro = "Показать электрофицированный путь";
         public const string exit = "Выход из программы";
+        public const string hide = "Свернуть программу";
+        public const string clickFile = "Запустить файл";
+        public const string gotoNextLayer = "Переход на следующий слой";
     }
 }
