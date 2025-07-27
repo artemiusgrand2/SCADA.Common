@@ -32,5 +32,6 @@ namespace SCADA.Common.Constant
         public const string hide = "Свернуть программу";
         public const string clickFile = "Запустить файл";
         public const string gotoNextLayer = "Переход на следующий слой";
+        public const string saveHistoryMessages = "Сохранить текущие сообщения";
     }
 }

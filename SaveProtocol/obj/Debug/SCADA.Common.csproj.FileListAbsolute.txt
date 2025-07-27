@@ -28,8 +28,8 @@ d:\Distr\SCADA.Common\SaveProtocol\bin\Debug\SCADA.Common.pdb
 d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInputs.cache
 d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.dll
 d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.pdb
-D:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CopyComplete
 d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CoreCompileInputs.cache
 d:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.CopyComplete
 D:\Distributiv\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csprojAssemblyReference.cache
 d:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Common.csproj.AssemblyReference.cache
+D:\Distr\SCADA.Common\SaveProtocol\obj\Debug\SCADA.Co.52934C8D.Up2Date

@@ -71,6 +71,7 @@
     <Compile Include="Enums\TypeView.cs" />
     <Compile Include="Enums\VisiblityLights.cs" />
     <Compile Include="HelpCommon\HelpFuctions.cs" />
+    <Compile Include="HelpCommon\StringHelper.cs" />
     <Compile Include="ImpulsClient\DataContainer.cs" />
     <Compile Include="ImpulsClient\FrameParser.cs" />
     <Compile Include="ImpulsClient\ImpulsClientCommon.cs" />

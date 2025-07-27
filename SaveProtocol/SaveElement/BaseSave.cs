@@ -96,5 +96,6 @@ namespace SCADA.Common.SaveElement
         /// Вид управляющей команды
         /// </summary>
         public ViewCommand ViewCommand { get; set; }
+
     }
 }

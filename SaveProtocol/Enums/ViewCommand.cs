@@ -32,6 +32,7 @@ namespace SCADA.Common.Enums
         show_command_not_auto_supervisory,
         hide,
         clickFile,
-        gotoNextLayer
+        gotoNextLayer,
+        saveHistoryMessages
     }
 }
