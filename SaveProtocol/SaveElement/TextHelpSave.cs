@@ -38,6 +38,10 @@ namespace SCADA.Common.SaveElement
         /// Высота теста
         /// </summary>
         public double FontSize { get; set; }
+        /// <summary>
+        /// Можно ли править текст
+        /// </summary>
+        public bool IsEditing { get; set; }
 
     }
 }
